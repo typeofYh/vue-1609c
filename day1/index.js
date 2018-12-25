@@ -65,6 +65,8 @@ if(10>5){
     }
 }
 
+
+const obj = {name:"zs"}
 // console.log(str);
 
 
