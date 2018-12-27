@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <input type="text" placeholder="请输入用户名" name="user">
+        <input type="password" placeholder="请输入密码" name="pwd">
+        <div name="submit" value="提交" id="submit">提交</div>
+    </form>
+    <script>
+        let users = [{
+            username:"zs",
+            password:1234
+        },{
+            username:"ww",
+            password:1234
+        },{
+            username:"xm",
+            password:1234
+        }]
+        //user=zs&pwd=1212&submit=提交
+        submit.onclick = function(){
+            let obj = {};
+            Array.from(document.querySelector('form').elements).forEach(function(item){
+                obj[item.name] = item.value
+            })
+            let res = users.find(function(item){
+                return item.username === obj.user && item.password == obj.pwd
+            });
+            if(res){
+                alert('恭喜'+res.username+'登陆成功')
+            }else{
+                alert('用户名密码输入有误')
+            }
+        }
+
+        // let arr = ['a','b','c','d'];
+
+    //     let title = ['bc123','china','banner','zs','ls'];
+
+    //    console.log(title.find(function(item){
+    //         return /a/i.test(item)
+    //     }));
+
+        
+        
+
+
+
+
+
+        // var arr = [1,2,3,4,{}];
+
+        // var arr2 = [].concat(arr);
+        // var arr3 = arr.slice();
+        // var arr4 = [...arr];
+        // arr2.push(10);
+        // arr3.shift();
+        // console.log(arr,arr2,arr3,arr4);
+        
+
+        //let dom = Array.from(document.querySelectorAll('div'));
+
+        //let arr = Array.of(10,20,30,40);
+
+        
+
+    </script>
+</body>
+</html>

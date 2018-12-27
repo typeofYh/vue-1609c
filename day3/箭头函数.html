@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let fun = (...arr) => {
+            console.log(arr);
+        }
+
+       fun(10,20,30,40);
+        
+        //1. 箭头的this指向指向外层对象
+        //2. 箭头函数不能为当作构造函数使用
+        //3. 箭头函数不能使用arguments
+
+        let arr = [10,30,40]; //[20,40,50]
+        console.log(arr.map(item => item + 10 ));
+        console.log(arr.map(item => {
+            return item + 10
+        }))
+        console.log(arr.map(function(item){
+            return item + 10;
+        }))
+    </script>
+</body>
+</html>

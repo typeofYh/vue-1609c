@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let i = 10;
+        // for(let i=10;i<20;i++){
+        //     console.log(i);
+        //     let i = 40;
+        // }
+
+
+
+        // var a = 'window';
+        // function func(){
+        //     console.log(a)
+        //     var a = 'func';
+        // }
+        // func();
+    
+        
+        // let [x=10,y] = [null,10];
+        // console.log(x,y);    
+
+
+        let arr = ['zjq','qjj','wlw','lpf','thj','ytt'];
+
+        // ['zjq','qjj','wlw','zjq','qjj','ytt'];
+
+        // arr.copyWithin(3,0,2);
+        // console.log(arr);
+        
+        // var newarr = [];
+        // arr.forEach(function(item){
+        //    if(!newarr.includes(item)){
+        //         newarr.push(item)
+        //    }
+        // })
+        // console.log(newarr);
+        // console.log(arr.flat(2));
+
+        // let a1 = arr.values();
+        // console.log(a1); //遍历器对象
+        // console.log(a1.next());
+        // console.log(a1.next());
+        // console.log(a1.next());
+        // console.log(a1.next());
+        // console.log(a1.next());
+        // console.log(a1.next());
+        // console.log(a1.next());
+        // console.log(a1.next());
+        // console.log(a1);
+        // for(let index of a1){
+        //     console.log(index);
+        // }
+
+        function Iterator(arr){
+            let index = -1;
+            let len = arr.length;
+            return {
+                next(){
+                   return {
+                        value:arr[++index],
+                        done:index >= len
+                   }
+                }
+            }
+        }
+       let a =  Iterator(arr);
+
+        console.log(a.next());
+        console.log(a.next());
+        console.log(a.next());
+        console.log(a.next());
+        console.log(a.next());
+        console.log(a.next());
+        console.log(a.next());
+
+
+
+        //string undefined number boolean Object null
+
+        //Set Map
+        //set 不会添加添加重复值
+        //map  可以使用对象来当作key
+        let setObj = new Set([1,1,3,4,4,6,6]);
+        // console.log(setObj);
+        let valus = setObj.values();
+        console.log(valus);
+        for(let v of valus){
+            console.log(v);
+        }
+
+
+        let tit = {class:"1609C"};
+        let mapObj = new Map();
+        mapObj.set(tit,'司振雷');
+        console.log(mapObj.get(tit));
+        for(let title of mapObj.keys()){
+            console.log(title);
+        }
+
+
+        
+    </script>
+</body>
+</html>

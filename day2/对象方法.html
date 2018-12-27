@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        // Object.assign();
+        //合并对象默认修改第一个参数
+
+
+        function ajax(obj){
+            let defaultes = {
+                type:"get",
+                url:"/aa",
+                data:"",
+                error:function(){},
+                async:true
+            };
+
+           console.log( Object.assign({},defaultes,obj));
+           console.log(defaultes);
+        }
+
+        ajax({
+            url:"/getdata",
+            success:function(){
+
+            }
+        })
+        
+
+
+        let a = {
+            name:"zs",
+            age:13,
+            firend:['ww','xm','xh'],
+            say:function(){}
+        }
+        let b = {
+            name:"ls",
+        }
+        b.name = 'xh';
+        console.log(Object.assign(a,b));
+
+
+        console.log(Object.is(NaN,NaN));
+
+        //获取该属性的描述对象
+        /*
+        configurable: true  可配置
+        enumerable: true  可枚举
+        value: "xh"  值
+        writable: true  可编写*/
+        Object.defineProperty(a,'name',{
+            get(){
+                return "1609C"
+            },
+            set(n){
+                if(n>5){
+                    alert('该属性比5大')
+                }
+            }
+        })
+       alert(a.name);
+       a.name = 10;
+
+
+
+    //    Object.assign()
+    // console.log( Object.keys(a))
+    // console.log(Object.values(a));
+    // console.log(Object.entries(a));
+    </script>
+</body>
+</html>

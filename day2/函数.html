@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.name = 'window';
+        let obj = {
+            name:"zs",
+            age:13,
+            say(){
+                var a = function(){
+                    this.name = 'aaa';
+                    console.log(this.name);
+                }
+                console.log(new a());
+                //this
+                let b = ()=>{
+                    console.log(this.name)
+                }
+                b();
+            }
+        }
+        obj.say();
+        
+
+        //function(){}
+        //1.普通函数会随着调用方式不同发生改变
+        //()=>{}
+        //1. 箭头的函数的this指向指向定义该函数的上下文对象
+        //2. 箭头函数不能被当作构造函数使用
+
+        
+    </script>
+</body>
+</html>

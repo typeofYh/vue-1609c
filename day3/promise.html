@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/loadimg.js"></script>
+    <script src="./js/ajax.js"></script>
+    <script>
+        // let setbackground = ()=>{
+        //     document.body.style.background = 'red';
+        //     ajax();
+        // }
+        // setTimeout(()=>{
+        //     setbackground();
+        // },100);
+
+        
+        //console.log(1)
+        // window.onload = function(){
+
+        // }
+
+        let obj = new Promise((reslove,reject)=>{
+            //reslove 成功执行的操作
+            //reject 失败执行的操作
+            setTimeout(()=>{
+                reslove('red');
+            },100)
+        });
+        //Promise.prototype.then() 调用成功的函数
+
+        obj.then((color)=>{ //reslove
+            console.log(color);
+        },()=>{ //reject
+
+        })
+
+
+        //promise 内部三种状态
+        //pending 正在执行中
+        //fulfilled 成功
+        // rejected 失败
+        // pending -> fulfilled 
+        // pending -> rejected
+
+        //Promise.prototype.catch
+        //捕捉异常 可以替代then的第二个参数
+    </script>
+</body>
+</html>

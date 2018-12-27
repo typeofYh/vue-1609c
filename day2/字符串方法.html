@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let str = 'abc';
+        for(let item of str){
+            console.log(item);
+        }
+        //等价于indexOf 方法 不过返回值位置boolean
+        console.log(str.includes('d'));
+
+
+        //检测该字符串是否以它开头
+        //第二个参数是要查找的位置
+        console.log(str.startsWith('a',1));
+        //检测该字符串是否以他结尾
+        console.log(str.endsWith('b',2));
+
+
+        // console.log(str.repeat(3));
+
+        let start = '⭐';
+        //重复出现该字符多少次
+        console.log(start.repeat(Math.floor(Math.random()*5+1)));
+
+        //补全字符串  第一个参数是补全后的长度 第二个是补全的字符串
+        //在该字符串前添加
+        console.log(start.padStart(5,'a'));
+        //在该字符串后添加
+        console.log(start.padEnd(5,'a'));
+
+
+
+
+    </script>
+</body>
+</html>

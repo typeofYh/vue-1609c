@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div data-key="abc">
+        <p>
+            <span data-key="123"></span>
+        </p>
+    </div>
+
+    <div data-key="a"></div>
+    <script>
+        let getDom = (attr) =>{
+            let allDom = Array.from(document.querySelectorAll('*'));
+            return allDom.filter(item => item.hasAttribute(attr))
+        }
+        console.log(getDom('data-key'));
+
+        // let Arr = {
+        //     goFilter(ck){
+
+        //     }
+        // }
+        // Arr.goFilter([{
+        //     item:1
+        // },{
+        //     item:2
+        // },{
+        //     item:-1
+        // }],(item)=>{
+        //     return item.time
+        // })
+        
+    </script>
+</body>
+</html>

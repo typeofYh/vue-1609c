@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //<div class="wrap"><p>hello</p></div>
+        function createElement(obj){
+            let {tagName,props,children} = obj;
+            let parent = document.createElement(tagName);
+            if(props){
+                Object.keys(props).forEach(function(item){
+                    parent.setAttribute(item,props[item]);
+                })
+            }
+            if(typeof children === 'object'){
+                parent.appendChild(createElement(children))
+            }else{
+                parent.innerHTML = children;
+            }
+            return parent;
+        }
+
+
+       document.body.appendChild( createElement({
+            tagName:"div",
+            props:{
+                class:"wrap",
+                style:"widht:100px"
+            },
+            children:{
+                tagName:"p",
+                children:"hello"
+            }
+        }));
+    
+    
+    </script>
+</body>
+</html>

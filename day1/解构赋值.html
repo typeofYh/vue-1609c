@@ -17,10 +17,97 @@
         //let [a,b,c] = [10,{name:"zs"},[10,20,30]];
        // console.log(a,b,c);
 
-        let [div,str,a] = [...document.querySelectorAll('div'),'bawei'];
-        console.log(div,str,a);
+        // let [div,str,a] = [...document.querySelectorAll('div'),'bawei'];
+        // console.log(div,str,a);
        // console.log(Array.prototype.slice.call(div).push(11))
+
+
+        // [10,20,30,40]
+        //a = 10
+        //b=20
+        //c=[30,40]
+        // let [a = 10 ,b,...c] = [null,20,30,40];
+        // console.log(a,b,c);
+
+        // let name = 'zs';
+        // let obj = {
+        //     name
+        // };
+        // console.log(obj);
+
+        let {
+            name="ww",  //name:name
+            age:age,
+            sex:sex
+        } = {
+            name:"zs",
+            age:13,
+            sex:"男"
+        };
+
+        // {
+        //     key:变量名
+        // } = {
+        //     key:变量值
+        // }
+
+        // console.log(name,age,sex);
+        //<div class="wrap"><p>hello</p></div>
+        // function createElement(obj){
+        //     //tagName = 'div',props ={},childe ="hello"
+        //     let {
+        //         tagName,
+        //         props:{
+        //             className
+        //         },
+        //         childern:childe
+        //     } = obj;
+        //      console.log(tagName,className,childe);
+        // }
+
+        // createElement({
+        //     tagName:'div',
+        //     props:{
+        //         className:"wrap"
+        //     },
+        //     childern:createElement({
+        //         tagName:"p",
+        //         childern:"hello"
+        //     })
+        // })
         
+
+        let a = 10;
+        let b = 20;
+        //a = 20 b = 10
+        // [a,b] = [b,a];
+        // console.log(a,b);
+        // let c = b;
+        // b = a;
+        // a = c;
+
+        function sum (a,...n){
+            // console.log(n);
+            return a + n.reduce(function(prev,next){
+                // console.log(this);
+                return prev + next;
+            });
+        }
+
+        console.log(sum('求和',10,20,30,50));
+
+
+        //forEach
+        //map
+        //filter
+        //reduce
+        //reduceRight
+        //some
+        //every
+
+        //[10,20,30,40];
+        //30+30
+        //60+40
     </script>
 </body>
 </html>
