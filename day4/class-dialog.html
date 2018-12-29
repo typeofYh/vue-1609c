@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            list-style: none;
+        }
+        .dialog{
+            width: 200px;
+            height: 100px;
+            background: gray;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+   
+    <script>
+
+        let Dialog = class {
+            constructor(settings){
+                this.title = settings.title;
+                this.btns = settings.btns;
+                this.closeFun = settings.close;
+                this.sureFun = settings.sure;
+                this.init();
+            }
+            init(){
+                this.createElement();
+                this.addEvnet();
+            }
+            createElement(){
+                this.dialogEl = document.createElement('div');
+                this.dialogEl.classList.add('dialog');
+                this.dialogEl.innerHTML  = `
+                        <h2>${this.title}</h2>
+                        <div>
+                            ${this.btns.map((item,index)=>"<button class=\"btn"+index+"\">"+item+"</button>").join('')}
+                        </div>
+                `;
+                document.body.append(this.dialogEl);
+            }
+            addEvnet(){
+                let surebtn = this.dialogEl.querySelector('.btn0');
+                let closebtn = this.dialogEl.querySelector('.btn1');
+                surebtn.onclick = this.sureFun.bind(this);
+                closebtn.onclick = this.closeFun.bind(this);
+            }
+        }
+
+        new Dialog({
+            title:"确定要购买吗?",
+            btns:['确定','取消'],
+            close(){
+                //点击取消执行操作
+                document.body.removeChild(this.dialogEl);
+            },  
+            sure(){
+                //点击确定执行操作
+                window.location.href = 'http://www.baidu.com'
+            }
+        });
+
+
+        // function DragDialog(){
+        //     Dialog.call(this);
+        // }
+        // DragDialog.prototype = Object.create(Dialog.prototype);
+        // DragDialog.constructor = DragDialog;
+        
+        class DragDialog extends Dialog{
+            constructor(obj){
+                super(obj); //Dialog
+                this.drag();
+            }
+            drag(){
+                this.dialogEl.onmousedown = (e)=>{
+                    let {x,y} = {x:e.clientX-this.dialogEl.offsetLeft,y:e.clientY-this.dialogEl.offsetTop};
+                    document.onmousemove = (e)=>{
+                        let {left,top} = {left:e.clientX-x,top:e.clientY-y};
+                        this.dialogEl.style.left = left +'px';
+                        this.dialogEl.style.top = top+'px';
+                    }
+                }
+                this.dialogEl.onmouseup = ()=>{
+                    document.onmousemove = null;
+                }
+            }
+        }
+
+        new DragDialog({
+            title:"确定要关闭吗?",
+            btns:['确定','取消'],
+            close(){
+                //点击取消执行操作
+                document.body.removeChild(this.dialogEl);
+            },  
+            sure(){
+                //点击确定执行操作
+                window.location.href = 'http://www.baidu.com'
+            }
+        })
+
+
+    </script>
+</body>
+</html>

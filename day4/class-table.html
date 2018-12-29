@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrap">
+        
+    </div>
+    <h2>1609C</h2>
+    <script>
+        // function SetStyle(obj){
+        //     this.el = obj.el
+        //     this.style = obj.style;
+        //     this.init();
+        // }
+
+        // SetStyle.prototype.init = function(){
+        //     alert(this.style);
+        // }
+        
+        class SetStyle {
+            constructor(obj){
+                this.el = this.getDom(obj.el);
+                this.data = obj.data;
+                this.createNav();
+            }
+            getDom(str,parent=document){
+                return typeof str === 'string' ? parent.querySelector(str) : str;
+            }
+            createNav(){
+                let keys = Object.keys(this.data);
+                keys.forEach((item,index) => {
+                    let btn = document.createElement('button');
+                    btn.innerHTML = item;
+                    this.el.append(btn);
+                })
+                this.initHtml(keys[0]);
+                this.addEvnet();
+            }
+            addEvnet(){
+                let btns = Array.from(this.el.querySelectorAll('button'))
+                btns.forEach(item=>{
+                    item.onclick = () => {
+                        this.initHtml(item.innerHTML);
+                    }
+                })
+            }
+            initHtml(tit){
+                let oldul = this.getDom('ul',this.el);
+                if(oldul){
+                    this.el.removeChild(oldul);
+                }
+                let ul = document.createElement('ul');
+                ul.innerHTML = this.data[tit].map(item=> `<li>${item.title}</li>` ).join('');
+                this.el.append(ul);
+            }
+        }
+    
+        new SetStyle({
+            el:'.wrap',
+            data:{
+                "btn1":[{
+                    title:"今日头条1"
+                },{
+                    title:"今日头条2"
+                }],
+                "btn2":[{
+                    title:"今日头条3"
+                },{
+                    title:"今日头条2"
+                }],
+                "btn3":[{
+                    title:"今日头条4"
+                },{
+                    title:"今日头条2"
+                }]
+            }
+        })
+        //class声明的函数必须使用new关键字来调用
+        //class不会提升
+        //class 不能重名
+        //class 会定义块级作用域
+
+
+
+
+    </script>
+</body>
+</html>

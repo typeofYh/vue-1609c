@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class MyPromise{
+            constructor(ck){
+                this.ck = ck;
+            }
+            then(resolve,reject){
+                this.ck(resolve,reject);
+            }
+            static all(){
+                console.log('all');
+            }
+        }
+
+        new MyPromise((resolve,reject)=>{
+            setTimeout(()=>{
+                resolve('red');
+            },1000)
+        }).then((col)=>{
+            console.log(col);
+        })
+        
+        MyPromise.all();
+    </script>
+</body>
+</html>

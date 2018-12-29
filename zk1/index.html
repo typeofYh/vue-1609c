@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            border:2px solid #000;
+        }
+    
+    </style>
+</head>
+<body>
+    <script>
+        class MoveCubics{
+            //功能实现
+            constructor(color='blue',width=300,height=300,num=3){
+                this.color = color;
+                this.width = width;
+                this.height = height;
+                this.num = num;
+                this.init();
+            }
+            init(){
+                for(let i=0;i<this.num;i++){
+                    let div = this.createElement('div',{
+                       style:{
+                           background:this.color,
+                           width:this.width,
+                           height:this.height,
+                           'margin-left':0,
+                           'margin-top':0
+                       },
+                       class:'colorBlock'
+                   },'hello');
+                   div.onclick = ()=> {
+                      this.focus(div);
+                   }
+                   document.body.append(div);
+                }
+                this.addEvent();
+            }
+            focus(el){
+                let items = Array.from(document.querySelectorAll('.colorBlock'))
+                items.forEach(div=>{
+                    div.classList.remove('active');
+                });
+                el.classList.add('active');
+            }
+            addEvent(){
+                document.onkeyup = (e)=>{
+                    let target = document.querySelector('.active');
+                    if(!target){
+                        return;
+                    }
+                    let {left=0,top=0} = {left:parseInt(target.style.marginLeft),top:parseInt(target.style.marginTop)}
+                    // console.log(target.style.marginLeft);
+                    switch(e.keyCode){
+                        case 37:
+                            left--;
+                            target.style.marginLeft = left+'px';
+                        break;
+                        case 38:
+                            top--;
+                            target.style.marginTop = top+'px';
+                        //上
+                        break;
+                        case 39:
+                            left++;
+                            target.style.marginLeft = left+'px';
+                        //右
+                        break;
+                        case 40:
+                        //下
+                            top++;
+                            target.style.marginTop = top+'px';
+                        break;
+                    }
+                }
+            }
+            createElement(tagname="div",props={},text){
+                let tag = document.createElement(tagname);
+                Object.keys(props).forEach(item=>{
+                    let propsItem = props[item];
+                    if(typeof propsItem === 'string'){
+                        tag.setAttribute(item,props[item]);
+                    }else{
+                        tag.setAttribute(item,Object.keys(propsItem).map(stylename => `${stylename}:${typeof propsItem[stylename]==='number' ? propsItem[stylename]+'px' : propsItem[stylename] }`).join(';'));
+                    }
+                });
+                tag.innerHTML = text;
+                return tag;
+            }
+        }
+        new MoveCubics();
+        
+    </script>
+</body>
+</html>

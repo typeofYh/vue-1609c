@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            list-style: none;
+        }
+        .content{
+            width: 100%;
+            height: 500px;
+        }
+        .pagebox{
+            text-align: center;
+        }
+        .pagebox span,.pagebox div,.pagebox select{
+            display: inline-block;
+            vertical-align: top;
+        }
+        .pagebox span{
+            padding: 5px 15px;
+            border:1px solid #000;
+            cursor:pointer;
+            user-select: none;
+        }
+        .pagebtn span.active{
+            background: skyblue;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="content" id="content"></div>
+    <div class="pagebox">
+        <span class="prevbtn"><</span>
+        <select id=""></select>
+        <div class="pagebtn">
+            <!-- <span>1</span>
+            <span>1</span>
+            <span>1</span> -->
+        </div>
+        <span class="nextbtn">></span>
+    </div>
+    <script src="data.js"></script>
+    <script>
+        class Pagination{
+            constructor(settings){
+                this.settings = settings;
+                this.el = this.getDom(this.settings.el);
+                this.select = this.getDom('select',this.el);
+                this.pageBtn = this.getDom('.pagebtn',this.el);
+                this.nextBtn = this.getDom('.nextbtn',this.el);
+                this.prevBtn = this.getDom('.prevbtn',this.el);
+                this.limit = this.settings.pageContent[0]; //默认条数 2
+                this.pagenum = 1;
+                this.init();
+            }
+            init(){
+                this.renderSelect(); //渲染下拉框
+                this.renderPageBtn(); //渲染按钮 总页数 总条数 / 每页多少条
+                this.getPageData(); //获取每页数据
+                this.addEvnet();//绑事件
+            }
+            addEvnet(){
+                //下拉框发生改变
+                this.select.onchange = () =>{ 
+                    this.limit = this.select.value*1;
+                    this.settings.cb2.call(this,this.limit); //children
+                    this.pagenum = 1;
+                    this.getPageData()
+                }
+                //点击页码
+                this.pageBtn.onclick = (e) =>{
+                    let tag = e.target;
+                    if(tag.tagName === 'SPAN'){
+                        this.pagenum = tag.innerHTML * 1;
+                        this.getPageData(); 
+                    }
+                }
+                //点击左右按钮
+                this.nextBtn.onclick = () => {
+                    this.pagenum++;
+                    this.pagenum = this.pagenum >= this.size ? this.size : this.pagenum;
+                    this.getPageData();
+                }
+                this.prevBtn.onclick = () => {
+                    this.pagenum--;
+                    this.pagenum = this.pagenum <= 1 ? 1 : this.pagenum;
+                    this.getPageData();
+                }
+            }
+            getPageData(){
+                let pagenum = this.pagenum; //页码
+                let limit = this.limit;
+                //根据页码切换类名
+                Array.from(this.pageBtn.children).forEach(item =>{
+                    item.innerText*1 === pagenum ? item.classList.add('active') : item.classList.remove('active'); 
+                })
+                let startindex = (pagenum - 1) * limit;
+                let endindex = pagenum * limit;
+                this.settings.cb1(this.settings.data.slice(startindex,endindex));
+            }
+            getDom(str,parent=document){
+                return typeof str === 'string' ? parent.querySelector(str) : str;
+            }
+            renderSelect(){ //渲染下拉框
+                let {pageContent} = this.settings;
+                this.select.innerHTML = pageContent.map(item=> `<option value="${item}">${item}条/页</option>` ).join('');
+            }
+            renderPageBtn(){ //分页按钮
+                let {data} = this.settings; //总数据
+                let size = this.size = Math.ceil(data.length / this.limit); //总页数
+                this.pageBtn.innerHTML = '';
+                for(let i=1;i<=size;i++){
+                    let span = document.createElement('span');
+                    span.innerText = i;
+                    this.pageBtn.append(span);
+                }
+            }
+        }
+
+        new Pagination({
+            el:'.pagebox',//类挂载的元素
+            data,  //总数据
+            pageContent:[2,5,10,15],  //每页显示的条数，可以选择；
+            cb1:function(data){
+                content.innerHTML = data.map(item=>`<p>${item.title}=====${item.id}</p>`).join('');
+            },   //页码改变时触发，接受到当前页的数据
+            cb2:function(n){
+                this.renderPageBtn(n);
+                //console.log(this);
+            }   //select框，每页显示的条数改变时触发
+	    })
+    </script>
+</body>
+</html>
