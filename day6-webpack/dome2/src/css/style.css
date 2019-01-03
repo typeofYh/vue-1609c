@@ -1,0 +1,24 @@
+*{
+    padding:0;
+    margin: 0;
+}
+
+body,html,.wrap{
+    width: 100%;
+    height: 100%;
+}
+
+.wrap{
+    background: url(../image/cd0bb358c45b584743d8ce4991777c42.svg);
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    
+}
+.wrap div{
+    width: 1000px;
+    height: 500px;
+    background: url(../image/1242397_100025082_2.jpg);
+    background-size: cover;
+}
+

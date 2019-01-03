@@ -1,0 +1,14 @@
+{
+  "name": "dome1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "webpack.js",
+  "scripts": {
+    "build": "webpack --config webpack.dev.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.28.3"
+  }
+}
