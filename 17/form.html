@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <form>
+            <input type="text" placeholder="请输入用户名" :value="username" v-model="username">
+            <input type="password" placeholder="请输入密码" :value="pwd" v-model="pwd">
+            <button @click.prevent="login">登陆</button>
+        </form>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                username: "",
+                pwd: ""
+            },
+            methods: {
+                login() {
+                    console.log(`用户名:${this.username},密码:${this.pwd}`)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

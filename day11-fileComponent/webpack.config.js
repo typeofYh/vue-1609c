@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
+const Vueloader = require('vue-loader/lib/plugin')
 module.exports = {
     //多入口文件
     entry:{
@@ -34,6 +35,9 @@ module.exports = {
             options:{
                 limit:3000
             }
+        },{
+            test:/\.vue$/,
+            loader:'vue-loader'
         }]
     },
     devServer:{
@@ -44,6 +48,13 @@ module.exports = {
         new HtmlPlugin({
             template:'./index.html'
         }),
-        new webpack.HotModuleReplacementPlugin()
-    ]
+        new webpack.HotModuleReplacementPlugin(),
+        new Vueloader() //调用该插件
+    ],
+    resolve:{
+        alias:{
+            'vue$':'vue/dist/vue.esm.js'
+        },
+        extensions:['.js','.vue','.json']
+    }
 }

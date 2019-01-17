@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        a{
+            text-decoration: none;
+            color:#999;
+        }
+        a.router-link-active{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <router-link to="/home">首页</router-link>
+        <router-link to="/list">列表</router-link>
+        <router-view></router-view>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.0.2/dist/vue-router.js"></script>
+    <script>
+        let router = new VueRouter({
+            routes:[{
+                path:'/home', //url
+                component:{ //组件
+                    template:'<div style="background:red;width:100px;height:100px"></div>'
+                }
+            },{
+                path:'/list',
+                component:{
+                    template:'<div style="background:blue;width:100px;height:100px"></div>'
+                }
+            }]
+        });
+        // console.log(router);
+        new Vue({
+            el:'#app',
+            router
+        })
+    
+    </script>
+</body>
+</html>

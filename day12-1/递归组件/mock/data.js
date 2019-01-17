@@ -1,0 +1,54 @@
+export default [{
+  id:0,
+  name:'src',
+  files:[{
+      id:1,
+      parentid:0,
+      name:'components',
+      files:[{
+          name:'myul.vue',
+          parentid:1,
+          id:7
+      }]
+  },{
+    id:2,
+    parentid:0,
+    name:'plugins',
+    files:[{
+        name:'index.js',
+        parentid:2,
+        id:9
+    },{
+        name:'common',
+        parentid:2,
+        id:10,
+        files:[{
+            name:'a.js',
+            id:11,
+            parentid:10
+        }]
+    }]
+  },{
+    id:3,
+    parentid:0,
+    name:'mock',
+    files:[{
+        name:'data.js',
+        parentid:3,
+        id:8
+    }]
+  },{
+    id:4,
+    parentid:0,
+    name:'App.vue'
+  },{
+    id:5,
+    parentid:0,
+    name:'main.js'
+  }]
+},{
+    id:6,
+    name:'index.html'
+} 
+]
+

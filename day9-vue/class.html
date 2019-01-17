@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .active{
+            background: red;
+        }
+        .box{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <button 
+            v-for="(val,index) in nav" 
+            :class="{active:index===defaultIndex}"
+            @click="defaultIndex = index">{{val}}</button>
+        </div>
+        <div v-html="content[defaultIndex]" :style="styleobj" style="text-align: center;"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                nav:['1609C','1609B','1609A'],
+                defaultIndex:0,
+                content:['28人','40人','38人'],
+                styleobj:[{
+                    width:'200px',
+                    height:'150px',
+                    backgroundColor:'red'
+                },{
+                    lineHeight:"150px"
+                }]
+            }
+        })
+    </script>
+</body>
+</html>

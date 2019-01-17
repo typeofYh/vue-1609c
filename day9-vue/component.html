@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-dl v-if="open"></my-dl>
+    </div>
+  
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //组件
+        //全局组件
+        //局部组件
+        Vue.component('my-dl',{
+            template:`
+            <dl class="dl">
+                <dt><img src="images/1.jpg"></dt>
+                <dd>
+                    <h2>{{title}}</h2>
+                    <p>{{infoaa()}}</p>
+                </dd>
+            </dl>
+            `,
+            data(){
+                return {
+                    title:"网易新闻",
+                    info:"这是第一条数据"
+                }
+            },
+            methods:{
+                infoaa(){
+                    return this.title+''+this.info
+                }
+            }
+            // beforeCreate(){
+            //     console.log(this.title);
+            //     console.log('beforeCreate');
+            // },
+            // created(){
+            //     console.log(this.title);
+            //     console.log('created');
+            // },
+            // beforeMount(){
+            //     console.log(document.querySelector('.dl'));
+            //     console.log('beforeMount');
+            // },
+            // mounted(){
+            //     console.log(document.querySelector('.dl'));
+            //     console.log('mounted');
+            //     this.title = '1609C';
+            // },
+            // beforeUpdate(){ //数据发生改变之后触发
+            //     console.log(this.title);
+            //     console.log(document.querySelector('.dl'));
+            // },
+            // updated(){//dom节点渲染完成之后触发的函数
+            //     console.log('updated');
+            // },
+            // beforeDestroy(){
+            //     console.log('销毁之前')
+            // },
+            // destroyed(){
+            //     console.log('销毁完成')
+            // }
+        });
+        //在组件内data变为函数
+        
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                open:true
+            }
+        })
+
+    
+        
+    </script>
+</body>
+</html>

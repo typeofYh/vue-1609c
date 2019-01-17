@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            data:{
+                name:"baidu",
+                url:"http://www.baidu.com",
+                username:"张三",
+                area:"海淀区",
+                info:"上地办公中心",
+                str:""
+            },
+            computed:{
+                title:{
+                    get(){
+                        return this.name +' '+ this.url
+                    },
+                    set(val){
+                        this.name = val.split(' ')[0];
+                        this.url = val.split(' ')[1];
+                    }
+                },
+                address(){
+                    return this.username +'-'+this.area+'-'+this.info
+                }
+            }
+            // methods:{
+            //     geturl(){
+            //         return this.name +' '+this.url
+            //     }
+            // }
+        })
+        //baidu http://www.baidu.con
+    </script>    
+</head>
+<body>
+    <div class="app">
+        <!-- {{geturl()}} -->
+        <input type="text" v-model="str">
+        <button @click="title=str">提交</button>
+        {{title}}
+
+        <p>{{address}}</p>
+    </div>
+    <script>
+        vm.$mount('.app');
+    </script>
+</body>
+</html>

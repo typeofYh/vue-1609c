@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="(item,index) in list">
+                <input type="checkbox" :checked="item.flag" @click="oneEvent(index)"> {{item.price}}
+            </li>
+        </ul>
+        <input type="checkbox" v-bind:checked="allflag" @click="allEvent"> 全选
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                list: [{
+                    price: 80,
+                    flag: false
+                }, {
+                    price: 60,
+                    flag: false
+                }, {
+                    price: 50,
+                    flag: false
+                }],
+                allflag: false
+            },
+            methods: {
+                allEvent() {
+                    this.allflag = !this.allflag;
+                    this.list.forEach((item) => {
+                        item.flag = this.allflag
+                    })
+                },
+                oneEvent(i) {
+                    this.list[i].flag = !this.list[i].flag;
+                    this.allflag = this.list.every(item => item.flag);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

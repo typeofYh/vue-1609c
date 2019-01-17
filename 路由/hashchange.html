@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <a href="#/home">首页</a>
+        <a href="#/list">列表</a>
+        <div class="router-view"></div>
+    </div>
+    <script>
+        const config = [{
+                path:'/home', //url
+                component:{ //组件
+                    template:'<div style="background:red;width:100px;height:100px"></div>'
+                }
+            },{
+                path:'/list',
+                component:{
+                    template:'<div style="background:blue;width:100px;height:100px"></div>'
+            }
+        }];
+        //hash
+        //histray
+        
+        const routerView = document.querySelector('.router-view');
+        window.addEventListener('hashchange',function(){
+            let path = this.location.hash.slice(1);
+            routerView.innerHTML = config.find(item=>item.path===path).component.template;
+        });
+
+    </script>
+</body>
+</html>

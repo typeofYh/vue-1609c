@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="wrap">
+        <h2>{{classname}}</h2>
+        <ul>
+            <li 
+            v-for="(val,index) in data" 
+            :key="index" 
+            :data-index="index">{{val.title}}</li>
+        </ul>
+        <p v-if="age > 1 && age < 12">儿童</p>
+        <p v-else-if="age >= 12 && age < 16">青少年</p>
+        <p v-else-if="age > 16 && age < 120">成年啦</p>
+        <p v-else>不是人</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+    
+        let mv = new Vue({
+            el:'#wrap',
+            data:{
+              classname:'1609C',
+              age:10,
+              data:[{
+                  title:"今日头条1"
+              },{
+                  title:"今日头条1"
+              },{
+                  title:"今日头条1"
+              }]  
+            }
+        })
+    </script>
+</body>
+</html>

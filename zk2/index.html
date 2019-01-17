@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+         <ul>
+             <li v-for="(val,index) in list">
+                 <h2 @click="dialogshow(index)">{{val.title}} <b>{{val.sum}}</b></h2>
+                 <div v-show="val.open">
+                     <dl v-for="(value,key) in val.data">
+                        <dt>{{key}}</dt>
+                        <dd v-for="(v,i) in value">
+                            <span>{{v.info}}</span><b>{{v.price}}</b>
+                        </dd>
+                     </dl>
+                 </div>
+             </li>
+         </ul>
+    </div>
+   
+</body>
+</html>

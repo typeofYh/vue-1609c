@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        米：<input type="text" v-model="mi">
+        千米：<input type="text" v-model="qianmi">
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        let vm = new Vue({
+            el:"#app",
+            data:{
+                mi:0,
+                qianmi:0
+            },
+            // watch:{
+            //     mi(val){
+            //         this.qianmi = val / 1000;
+            //     }
+            // }
+        })
+        vm.$watch('mi',(val,oldval)=>{
+            console.log(val);
+        })
+    </script>
+</body>
+</html>

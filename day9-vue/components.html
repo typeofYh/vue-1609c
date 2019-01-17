@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-dl></my-dl>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //组件
+        //全局组件
+        //局部组件
+        
+        let vm = new Vue({
+            el:'#app',
+            data:{
+                open:true
+            },
+            components:{
+                MyDl:{
+                    template:`
+                    <dl class="dl">
+                        <dt><img src="images/1.jpg"></dt>
+                        <dd>
+                            <h2>{{title}}</h2>
+                            <p>{{info}}</p>
+                            <my-div></my-div>
+                        </dd>
+                    </dl>
+                    `,
+                    data(){
+                        return {
+                            title:"aaaaa",
+                            info:'hello'
+                        }
+                    },
+                    components:{
+                        'my-div':{
+                            template:"<div>23231112</div>"
+                        }
+                    }
+                }
+            }
+        })
+
+
+       
+        
+    </script>
+</body>
+</html>

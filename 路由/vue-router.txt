@@ -1,0 +1,11 @@
+1.下载vue-router
+2.实例化VueRouter 得到router对象
+
+
+3. <router-link></router-link> 切换路由的出口 
+to跟要切换的路径
+最终解析出来也是a标签
+
+4.<router-view></router-view> 组件视图出口
+
+
